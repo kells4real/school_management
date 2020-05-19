@@ -1,0 +1,122 @@
+{% extends 'management/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{#{% include 'partials/_alerts.html' %}#}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Edit Student Info</h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+
+               <div class="form-row">
+                    <div class="form-group col-md-5 mb-0">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-1 mb-0">
+                    </div>
+                        <div class="form-group col-md-3 mb-0">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+
+               </div>
+
+         <div class="form-row">
+
+             <div class="form-group col-md-3 mb-0">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-1 mb-0">
+                    </div>
+                                 </div>
+
+             <div class="form-row">
+                 <div class="form-group col-md-2 mb-0">
+                     {{ form.date_of_birth|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.student_class|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.academic_year|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.gender|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+             </div>
+                              <div class="form-row">
+                 <div class="form-group col-md-2 mb-0">
+                        {{ form.mother_name|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.mother_number|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.father_name|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.father_number|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+
+
+                              </div>
+
+                 <div class="form-row">
+                      <div class="form-group col-md-8 mb-0">
+                        {{ form.address|as_crispy_field }}
+                    </div>
+                         <div class="form-group col-md-1 mb-0">
+
+                    </div>
+
+                         <div class="form-group col-md-2 mb-0">
+                        {{ form.religion|as_crispy_field }}
+                    </div>
+                 </div>
+                 <div class="form-row">
+                      <div class="form-group col-md-2 mb-0">
+                        {{ form.image|as_crispy_field }}
+                    </div>
+                 </div>
+
+
+<br>
+        <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+

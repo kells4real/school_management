@@ -1,0 +1,228 @@
+{% load static %}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                {% if user.is_admin %}
+                <a class="nav-link" href="{% url 'admin-page' %}"><i class="icon-speedometer"></i> Dashboard</a>
+                {% elif user.is_student %}
+                <a class="nav-link" href="{% url 'single-student' user.studentprofile.slug %}"><i class="icon-speedometer"></i>Dashboard</a>
+                                    {% elif user.is_teacher %}
+                <a class="nav-link" href="{% url 'single-teacher' user.teacherprofile.slug %}"><i class="icon-speedometer"></i>Dashboard</a>
+                {% else %}
+                {% endif %}
+            </li>
+            {% if user.is_admin or user.is_superuser %}
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Students</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-list' %}">
+                            <i class="nav-icon icon-refresh"></i>All Students</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss1' %}">
+                            <i class="nav-icon icon-pie-chart"></i>JSS 1</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss2' %}">
+                            <i class="nav-icon icon-bell"></i>JSS 2</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss3' %}">
+                            <i class="nav-icon icon-home"></i>JSS 3</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss1' %}">
+                            <i class="nav-icon icon-chemistry"></i>SS 1</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss2' %}">
+                            <i class="nav-icon icon-book-open"></i>SS 2</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss3' %}">
+                            <i class="nav-icon icon-calculator"></i>SS 3</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-calendar"></i> Attendance</a>
+                    </li>
+
+                {% elif user.is_teacher %}
+
+                            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Students</a>
+                <ul class="nav-dropdown-items">
+                {% if jss1 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss1' %}">
+                            <i class="nav-icon icon-pie-chart"></i>JSS 1</a>
+                    </li>
+                    {% endif %}
+                {% if jss2 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss2' %}">
+                            <i class="nav-icon icon-bell"></i>JSS 2</a>
+                    </li>
+                    {% endif %}
+                {% if jss3 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss3' %}">
+                            <i class="nav-icon icon-home"></i>{{ jss3.name }}</a>
+                    </li>
+                    {% endif %}
+                    {% if ss1 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss1' %}">
+                            <i class="nav-icon icon-chemistry"></i>SS 1</a>
+                    </li>
+                {% endif %}
+                        {% if ss2 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss2' %}">
+                            <i class="nav-icon icon-book-open"></i>SS 2</a>
+                    </li>
+                            {% endif %}
+                {% if ss3 in classes %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss3' %}">
+                            <i class="nav-icon icon-calculator"></i>SS 3</a>
+                    </li>
+                    {% endif %}
+
+                                {% elif user.is_student %}
+
+                            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Students</a>
+                <ul class="nav-dropdown-items">
+                {% if jss1 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss1' %}">
+                            <i class="nav-icon icon-pie-chart"></i>Class List</a>
+                    </li>
+                    {% endif %}
+                {% if jss2 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss2' %}">
+                            <i class="nav-icon icon-bell"></i>Class List</a>
+                    </li>
+                    {% endif %}
+                {% if jss3 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-jss3' %}">
+                            <i class="nav-icon icon-home"></i>Class List</a>
+                    </li>
+                    {% endif %}
+                    {% if ss1 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss1' %}">
+                            <i class="nav-icon icon-chemistry"></i>Class List</a>
+                    </li>
+                {% endif %}
+                        {% if ss2 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss2' %}">
+                            <i class="nav-icon icon-book-open"></i>Class List</a>
+                    </li>
+                            {% endif %}
+                {% if ss3 == class %}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-ss3' %}">
+                            <i class="nav-icon icon-calculator"></i>Class List</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-calendar"></i> Attendance</a>
+                    </li>
+
+
+                    {% endif %}
+
+
+        {% if user.is_admin or user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'student-register' %}">
+                            <i class="nav-icon icon-pencil"></i> New Student</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Teachers</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher-list' %}">
+                            <i class="nav-icon icon-trophy"></i> Teacher List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher-register' %}">
+                            <i class="nav-icon icon-paper-clip"></i> New Teacher</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Employees</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i> Employee List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i> Create Employee</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Students' Results</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i>Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i>Compile Results</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+{% endif %}
+
+{% if user.is_student %}
+<li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> My Results</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i>All Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i>Last Result</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+{% endif %}
+
+    {% block sidebar %}
+    {% endblock %}
+</div>
+

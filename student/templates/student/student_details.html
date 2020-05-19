@@ -1,0 +1,106 @@
+{% extends 'management/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Students Academic Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Academic Year: &emsp;{{ single_student.user.academic_year }}</td>
+                        <br>
+                        <td>Admission Date: &emsp;{{ single_student.admission_date }}</td>
+                        <br>
+                        <td>Class: &emsp;{{ single_student.user.student_class }}</td>
+                        <br>
+                        <td>Section: &emsp;{{ single_student.user.academic_year }}</td>
+                        <br>
+                        <td>Shift:&emsp; {{ single_student.shift_type }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Students Personal Info
+            </div>
+            <div class="card-body">
+
+                <h6>Full Name: &emsp;{{ single_student.user.first_name }} {{ single_student.user.last_name }}</h6>
+                <h6>Date of Birth: &emsp; {{ single_student.user.date_of_birth }}</h6>
+                <h6>Gender: &emsp; {{ single_student.user.gender }}</h6>
+                <h6>Address: &emsp; {% if single_student.user.address %}{{ single_student.user.address }} {% endif %}</h6>
+                <br>
+                {% if single_student.bio %}
+                    <h6 style="text-align: center">Bio</h6>
+                <h6>{{ single_student.bio }} </h6>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Fathers Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Fathers Name: &emsp; {{ single_student.user.father_name }}</td>
+                        <br>
+                        <td>Fathers NID: &emsp; {{ single_student.father_nid }}</td>
+                        <br>
+                        <td>Contact Number: &emsp; {{ single_student.user.father_number }}</td>
+                        <br>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Mothers Info
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Mothers Name: &emsp; {{ single_student.user.mother_name }}</td>
+                        <br>
+                        <td>Mothers NID: &emsp; {{ single_student.mother_nid }}</td>
+                        <br>
+                        <td>Contact Number: &emsp; {{ single_student.user.mother_number }}</td>
+                        <br>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Student Image
+            </div>
+            <div class="card-body">
+                <img src="{{ single_student.user.image.url }}" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

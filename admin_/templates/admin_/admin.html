@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>LOGGED IN</h4>
+
+{% if user.is_authenticated %} <h4><a href="{% url 'logout' %}">Logout</a> </h4>
+     {% endif %}
+
+{% if user.is_authenticated and user.is_admin or user.is_superuser %}<h4><a href="{% url 'student-register' %}">Register New Student</a> </h4> {% endif %}
+
+{% if user.is_authenticated and user.is_superuser %}<a href="{% url 'admin-register' %}"><h4>Register An Admin</h4> </a> {% endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+{% load sweetify %}
+{% sweetify %}
+</body>
+</html>

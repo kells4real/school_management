@@ -1,0 +1,143 @@
+{% extends 'management/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{#{% include 'partials/_alerts.html' %}#}
+<style>
+#id_salary_1{
+    width: 180px;
+}
+
+ @media only screen and (min-width: 240px) and (max-width:320px)
+                       ,
+                       (min-width: 320px) and (max-width:480px)
+                       ,
+                       (min-width: 480px) and (max-width:768px) {
+#id_salary_1{
+    width: 100%;
+}
+     #id_salary_0{
+    width:100%;
+}
+     }
+</style>
+<div class="card">
+    <div class="card-header">
+        <h2>Teacher Registration Form</h2>
+    </div>
+    <div class="card-body">
+        <form action="" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+
+               <div class="form-row">
+                    <div class="form-group col-md-5 mb-0">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-1 mb-0">
+                    </div>
+                        <div class="form-group col-md-3 mb-0">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+
+               </div>
+
+         <div class="form-row">
+                    <div class="form-group col-md-2 mb-0">
+                        {{ form.username|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-1 mb-0">
+                    </div>
+
+             <div class="form-group col-md-2 mb-0">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+
+                    <div class="form-group col-md-1 mb-0">
+                    </div>
+
+             <div class="form-group col-md-2 mb-0">
+                        {{ form.password|as_crispy_field }}
+                    </div>
+
+                          <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                                 <div class="form-group col-md-2 mb-0">
+                        {{ form.password2|as_crispy_field }}
+                    </div>
+
+                                 </div>
+
+             <div class="form-row">
+                 <div class="form-group col-md-2 mb-0">
+                     {{ form.date_employed|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.salary|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.religion|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                   <div class="form-group col-md-2 mb-0">
+                        {{ form.gender|as_crispy_field }}
+                    </div>
+                   <div class="form-group col-md-1 mb-0">
+
+                    </div>
+             </div>
+
+                     <div class="form-row">
+                      <div class="form-group col-md-8 mb-0">
+                        {{ form.address|as_crispy_field }}
+                    </div>
+                          <div class="form-group col-md-1 mb-0">
+
+                    </div>
+                          <div class="form-group col-md-2 mb-0">
+                        {{ form.phone_no|as_crispy_field }}
+                    </div>
+                 </div>
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-3 mb-0 " style="color: #007ee5">
+                        {{ form.subject|as_crispy_field }}
+                    </div>
+
+                        <div class="form-group col-md-3 mb-0 " style="color: #007ee5">
+
+                    </div>
+                     <div class="form-group col-md-2 mb-0 " style="color: #007ee5">
+                        {{ form.classes|as_crispy_field }}
+                    </div>
+
+                </div>
+
+                 <div class="form-row">
+                      <div class="form-group col-md-2 mb-0">
+                        {{ form.image|as_crispy_field }}
+                    </div>
+                 </div>
+
+
+<br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

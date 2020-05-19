@@ -1,0 +1,25 @@
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Circle Fintech">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="{% static 'management/src/img/favicon.png' %}">
+    <title>Circle Fintech</title>
+
+    <!-- Icons -->
+    <link href="{% static 'management/dist/vendors/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'management/dist/vendors/css/simple-line-icons.min.css' %}" rel="stylesheet">
+
+     <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'management/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'management/css/bootstrap-grid.css' %}">
+
+    <!-- Main styles for this application -->
+    <link href="{% static 'management/dist/css/style.css' %}" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    {% block extrahead %}
+    {% endblock %}
+</head>

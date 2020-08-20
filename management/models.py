@@ -13,6 +13,9 @@ class Plan(models.Model):
     limit = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 
 def user_upload(instance, filename):
     username = instance.username
@@ -33,6 +36,92 @@ class Class(models.Model):
 class School(models.Model):
     name = models.CharField(max_length=150, null=True)
     address = models.CharField(max_length=150, null=True)
+
+    ABI = 'ABI'
+    ADA = 'ADA'
+    AKW = 'AKW'
+    ANA = 'ANA'
+    BAU = 'BAU'
+    BAY = 'Bayelsa State'
+    BEN = 'Benue State'
+    BON = 'Borno State'
+    CRR = 'Cross River State'
+    DEL = 'Delta State'
+    EBO = 'Ebonyi State'
+    ENU = 'Enugu State'
+    EDO = 'Edo State'
+    ABJ = 'FCT - Abuja'
+    GOM = 'Gombe State'
+    IMO = 'Imo State'
+    KAD = 'Kaduna State'
+    KAN = 'Kano State'
+    KAT = 'Katsina State'
+    KEB = 'Kebbi State'
+    KOG = 'Kogi State'
+    KWA = 'Kwara State'
+    LAG = 'Lagos State'
+    NAS = 'Nasarawa State'
+    NIG = 'Niger State'
+    OGU = 'Ogun State'
+    OND = 'Ondo State'
+    OYO = 'Oyo State'
+    PLA = 'Plateau State'
+    RIV = 'Rivers State'
+    SOK = 'Sokoto State'
+    TAR = 'Taraba State'
+    YOB = 'Yobe State'
+    ZAM = 'Zamfara State'
+    DEV = 'Developer'
+    INT = 'Intern'
+    CEO = 'Chief Executive Officer(C.E.O)'
+    CTO = 'Chief Tech Officer(C.T.O)'
+    HR = 'Human Resources'
+    MAR = 'Marketer'
+    MARR = 'Married'
+    SIN = 'Single'
+    states = (
+        (ABI, 'Abia'),
+        (ADA, 'Adamawa'),
+        (AKW, 'Akwa-Ibom'),
+        (ANA, 'Anambra'),
+        (BAU, 'Bauchi'),
+        (BAY, 'Bayelsa'),
+        (BEN, 'Benue'),
+        (BON, 'Borno'),
+        (CRR, 'Cross'),
+        (DEL, 'Delta'),
+        (EBO, 'Ebonyi'),
+        (ENU, 'Enugu'),
+        (EDO, 'Edo'),
+        (ABJ, 'FCT - Abuja'),
+        (GOM, 'Gombe'),
+        (IMO, 'Imo'),
+        (KAD, 'Kaduna'),
+        (KAN, 'Kano'),
+        (KAT, 'Katsina'),
+        (KEB, 'Kebbi'),
+        (KOG, 'Kogi'),
+        (KWA, 'Kwara'),
+        (LAG, 'Lagos'),
+        (NAS, 'Nasarawa'),
+        (NIG, 'Niger'),
+        (OGU, 'Ogun'),
+        (OND, 'Ondo'),
+        (OYO, 'Oyo'),
+        (PLA, 'Plateau'),
+        (RIV, 'Rivers'),
+        (SOK, 'Sokoto'),
+        (TAR, 'Taraba'),
+        (YOB, 'Yobe'),
+        (ZAM, 'Zamfara')
+    )
+
+    state = models.CharField(
+        max_length=100,
+        choices=states,
+        default=ABI,
+    )
+
     date = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
     teacher_can_view_student_details = models.BooleanField(default=True)
@@ -77,6 +166,7 @@ class User(AbstractUser):
     salary = MoneyField(max_digits=10, decimal_places=2, default_currency='NGN', null=True, blank=True)
     phone_no = models.CharField(max_length=50, null=True)
     classes = models.ManyToManyField(Class)
+    admission_date = models.DateField(null=True, blank=True)
 
     # Student Specific
     mother_name = models.CharField(max_length=50, null=True)
@@ -108,6 +198,8 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+
 
 class StudentProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

@@ -7,20 +7,18 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Students Academic Info
+                 <i class="fa fa-align-justify"></i> Student's Academic Info
             </div>
             <div class="card-body">
                 <tbody>
                     <tr>
                         <td>Academic Year: &emsp;{{ single_student.user.academic_year }}</td>
                         <br>
-                        <td>Admission Date: &emsp;{{ single_student.admission_date }}</td>
+                        <td>Admission Date: &emsp;{{ single_student.user.admission_date }}</td>
                         <br>
                         <td>Class: &emsp;{{ single_student.user.student_class }}</td>
                         <br>
                         <td>Section: &emsp;{{ single_student.user.academic_year }}</td>
-                        <br>
-                        <td>Shift:&emsp; {{ single_student.shift_type }}</td>
                     </tr>
                 </tbody>
             </div>
@@ -29,7 +27,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Students Personal Info
+                 <i class="fa fa-align-justify"></i> Student's Personal Info
             </div>
             <div class="card-body">
 
@@ -52,7 +50,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Fathers Info
+                 <i class="fa fa-align-justify"></i> Father's Info
             </div>
             <div class="card-body">
                 <tbody>
@@ -71,7 +69,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Mothers Info
+                 <i class="fa fa-align-justify"></i> Mother's Info
             </div>
             <div class="card-body">
                 <tbody>
@@ -93,7 +91,7 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Student Image
+                 <i class="fa fa-align-justify"></i> Student's Image
             </div>
             <div class="card-body">
                 <img src="{{ single_student.user.image.url }}" class="img-fluid" />

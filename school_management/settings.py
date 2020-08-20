@@ -101,8 +101,8 @@ DATABASES = {
         'OPTIONS': {
             'sql_mode': 'traditional'},
         'NAME': 'school',
-        'USER': os.environ.get("DB_USERNAME"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'USER': "root",
+        'PASSWORD': "Stalking26",
     }
 }
 

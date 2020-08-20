@@ -9,6 +9,12 @@ class StudentRegisterForm(forms.ModelForm):
                      error_messages={'invalid': "Enter a valid phone number"}, label="Phone No")
     father_number = forms.RegexField(regex=re.compile(r'^[0-9+]{10,15}$'), required=False,
                      error_messages={'invalid': "Enter a valid phone number"}, label="Phone No")
+    admission_date = forms.DateField(
+    widget=forms.TextInput(
+        attrs={'type': 'date', 'title': 'Date of birth'}
+    )
+)
+
     date_of_birth = forms.DateField(
     widget=forms.TextInput(
         attrs={'type': 'date', 'title': 'Date of birth'}
@@ -22,7 +28,7 @@ class StudentRegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name', 'last_name', 'date_of_birth', 'student_class', 'gender',
-                  'academic_year', 'image', 'password', 'password2', 'mother_name', 'mother_number', 'father_name',
+                  'academic_year', 'image', 'password', 'password2', 'admission_date', 'mother_name', 'mother_number', 'father_name',
                   'father_number', 'address', 'religion')
 
         labels = {
@@ -107,6 +113,13 @@ class UpdateStudentRegisterForm(forms.ModelForm):
                      error_messages={'invalid': "Enter a valid phone number"}, label="Phone No")
     father_number = forms.RegexField(regex=re.compile(r'^[0-9+]{10,15}$'), required=False,
                      error_messages={'invalid': "Enter a valid phone number"}, label="Phone No")
+
+    admission_date = forms.DateField(
+        widget=forms.TextInput(
+            attrs={'type': 'date', 'title': 'Date of birth'}
+        )
+    )
+
     date_of_birth = forms.DateField(
     widget=forms.TextInput(
         attrs={'type': 'date', 'title': 'Date of birth'}
@@ -118,7 +131,7 @@ class UpdateStudentRegisterForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'first_name', 'last_name', 'date_of_birth', 'student_class', 'gender',
-                  'academic_year', 'image', 'mother_name', 'mother_number', 'father_name',
+                  'academic_year', 'image', 'admission_date', 'mother_name', 'mother_number', 'father_name',
                   'father_number', 'address', 'religion',)
 
         labels = {

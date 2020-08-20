@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import User, TeacherProfile, StudentProfile,\
-    Profile, School, Class, AcademicYear
+    Profile, School, Class, AcademicYear,Plan
 # from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -25,3 +25,4 @@ admin.site.register(Profile, ProfileAdmin)
 admin.site.register(School)
 admin.site.register(Class)
 admin.site.register(AcademicYear)
+admin.site.register(Plan)
